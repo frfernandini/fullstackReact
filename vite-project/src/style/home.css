@@ -1,0 +1,188 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #1f1f1f 60%, #1E90FF 100%);
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100% !important; 
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* Contenedor principal */
+.container-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center; /* centrar cards */
+  margin: 50px auto;
+  max-width: 1500px;
+}
+
+/* Cada card */
+.card-product {
+  width: 265px;
+  border: 3px solid #39FF14;  
+  border-radius: 15px; 
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #000000d2;
+}
+
+.card-product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.9);
+}
+
+/* Imagen */
+.card-product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* TEXTO(titulo+precio+descripción) */
+.card-content {
+  flex-grow: 1; /* ocupa todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título */
+.card-titulo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Precio */
+.card-precio {
+  font-size: 20px;
+  color: #08bd71;
+  margin-bottom: 5px;
+}
+
+/* Descripción */
+.card-desc {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+/*TITULO OFERTAS*/
+.titulo-ofertas {
+  color: #39FF14;
+  margin: 2rem auto 1.5rem;
+  font-size: 2.2rem;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 5px #39FF14, 0 0 10px #00ff88;
+  border-bottom: 3px solid #39FF14;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+
+/*BOTÓN AGREGAR AL CARRITO*/
+.btn-agregar {
+    margin: 5px auto 5px;
+    background-color: #39FF14;
+    color: #000000;
+    padding: 0.5rem 0.5rem;
+    font-size: 1.1rem;
+    border: 2px  solid #39FF14;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-agregar:hover {
+    background-color: #39FF14;
+    border-color: #39FF14;
+    box-shadow: 0 0 10px #39FF14;
+}
+
+#my-carousel {
+  width: 90%; 
+  max-width: 1700px; 
+  margin: 0px auto 50px; /* Centra el carrusel horizontalmente */
+  border: 3px solid #39FF14;  
+  border-radius: 30px;
+}
+
+#my-carousel .carousel-inner {
+  max-height: 500px; /* Mantiene una altura máxima */
+  overflow: hidden; /* Evita que el contenido desborde */
+}
+
+
+#my-carousel .carousel-item img {
+  object-fit: cover; /* Mantener la proporción imagen */
+  width: 100%; 
+  height: auto; /* Ajusta la altura automáticamente */
+  max-height: 500px; /*limita la altura máxima */
+  display: block; /* no haya espacios debajo de la imagen */
+  margin: 0 auto; /* Centra la imagen si es más pequeña que el contenedor */
+  border-radius: 30px;
+  opacity: 0.7;
+}
+
+#my-carousel .carousel-indicators button {
+  background-color: #39FF14; /* Color de los puntos inactivos */
+}
+
+#my-carousel .carousel-indicators .active {
+  background-color: #007bff; /* Color del punto activo */
+}
+
+#my-carousel .carousel-caption {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra vertical y horizontal */
+    text-align: center;
+    padding: 20px 40px;
+    max-width: 80%;
+}
+
+
+#my-carousel .carousel-caption h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000, 0 0 20px #15ff00;
+    margin-bottom: 10px;
+}
+
+#my-carousel .carousel-caption p {
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 5px #15ff00, 0 0 10px #000000;
+}
+
+
+.header header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.header .col-md-3,
+.header .text-end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

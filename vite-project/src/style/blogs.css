@@ -1,0 +1,349 @@
+/* Blogs - Diseño moderno gaming */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Variables CSS */
+:root {
+    --primary-color: #39FF14;
+    --secondary-color: #1E90FF;
+    --dark-bg: #0a0f1c;
+    --darker-bg: #070b14;
+    --card-bg: #1a2332;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(57, 255, 20, 0.2);
+    --shadow-primary: 0 4px 20px rgba(57, 255, 20, 0.15);
+}
+
+/* Reset y estilos base para sobrescribir login.css */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: var(--dark-bg) !important;
+    font-family: 'Inter', sans-serif !important;
+    line-height: 1.6 !important;
+    color: var(--text-primary) !important;
+    min-height: auto !important;
+    display: block !important;
+    flex-direction: initial !important;
+    justify-content: initial !important;
+    align-items: initial !important;
+}
+
+/* Hero section */
+.blogs-hero {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.blogs-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(57, 255, 20, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.blogs-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* Sección principal de blogs */
+.blogs-section {
+    padding: 3rem 0;
+    background: var(--dark-bg);
+    position: relative;
+}
+
+.blogs-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(57, 255, 20, 0.03) 0%, transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(30, 144, 255, 0.03) 0%, transparent 60%);
+}
+
+.blogs-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Cards de noticias */
+.news-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.news-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(57, 255, 20, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(57, 255, 20, 0.2);
+}
+
+.news-card:hover::before {
+    opacity: 1;
+}
+
+.news-content {
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.news-card h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.news-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Imagen de noticias */
+.news-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.news-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(57, 255, 20, 0.1), rgba(30, 144, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.news-card:hover .image-overlay {
+    opacity: 1;
+}
+
+/* Botones */
+.btn-news {
+    background: linear-gradient(135deg, var(--primary-color), #2ed910);
+    border: none;
+    color: var(--darker-bg);
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-news::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-news:hover::before {
+    left: 100%;
+}
+
+.btn-news:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.4);
+    color: var(--darker-bg);
+}
+
+/* Botón secundario */
+.btn-secondary-news {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-secondary-news:hover {
+    background: var(--secondary-color);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.3);
+}
+
+/* Tags de categoría */
+.news-category {
+    display: inline-block;
+    background: rgba(57, 255, 20, 0.2);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    border: 1px solid var(--primary-color);
+}
+
+.news-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Grid de noticias */
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Responsive */
+@media (min-width: 992px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .news-card.featured {
+        grid-column: span 2;
+    }
+    
+    .news-card.featured .row {
+        align-items: center;
+    }
+    
+    .news-card.featured .news-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .news-content {
+        padding: 1.5rem;
+    }
+    
+    .news-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .news-image {
+        height: 200px;
+    }
+    
+    .btn-news,
+    .btn-secondary-news {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Efectos adicionales */
+.news-card .col-md-6:first-child {
+    padding-right: 2rem;
+}
+
+@media (max-width: 768px) {
+    .news-card .col-md-6:first-child {
+        padding-right: 1rem;
+        margin-bottom: 1rem;
+    }
+}

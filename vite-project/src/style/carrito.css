@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+.product-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    padding: 15px 0;
+}
+.product-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
+.product-info {
+    flex-grow: 1;
+    color: #FFFFFF;
+}
+
+.product-info p {
+    color: #D3D3D3;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #39FF14;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.quantity-control button {
+    background: #39FF14;
+    border: none;
+    color: #1f1f1f;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity-control button:hover {
+    box-shadow: 0 0 8px #39FF14;
+}
+.quantity-control span {
+    padding: 5px 10px;
+    border-left: 1px solid #39FF14;
+    border-right: 1px solid #39FF14;
+    background-color: #212529;
+    color: #FFFFFF;
+}
+.order-summary {
+    border: 1px solid #444;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #FFFFFF; /* Texto principal para el resumen */
+}
+/*LISTADO DE PRODUCTOS CARRITO*/
+.card {
+  background-color: #1a1a1a; /* fondo oscuro */
+  border: 1px solid #39FF14; /* borde verde */
+  color: #ffffff;
+}
+
+.text-muted {
+  color: #929191 !important; /* gris claro */
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.order-summary label {
+    color: #D3D3D3;
+}
+
+.input-group .form-control {
+    background-color: #212529;
+    border-color: #444;
+    color: #FFFFFF;
+}
+
+.input-group .btn-outline-secondary {
+    color: #39FF14;
+    border-color: #39FF14;
+}
+
+.input-group .btn-outline-secondary:hover {
+    background-color: #39FF14;
+    color: #1f1f1f;
+    border-color: #39FF14;
+    box-shadow: 0 0 10px #39FF14;
+}
+
+.btn-success {
+    background-color: #39FF14;
+    border-color: #39FF14;
+    color: #1f1f1f;
+}
+
+.btn-success:hover {
+    box-shadow: 0 0 10px #39FF14;
+}

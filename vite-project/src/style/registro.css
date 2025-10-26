@@ -1,0 +1,45 @@
+body {
+    background-color: #1f1f1f; /* Fondo oscuro consistente */
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF; /* Texto principal blanco */
+}
+
+.form-signin h1 {
+    color: #FFFFFF;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.dropdown select {
+    flex: 1;
+    border-radius: 0.375rem;
+    border: 1px solid #444; /* Borde oscuro */
+    background-color: #212529; /* Fondo oscuro */
+    color: #FFFFFF; /* Texto blanco */
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+}
+
+.btn-outline-secondary {
+    color: #39FF14;
+    border-color: #39FF14;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #39FF14;
+    color: #1f1f1f;
+    border-color: #39FF14;
+    box-shadow: 0 0 10px #39FF14;
+}
+
+.text-center span {
+    color: #D3D3D3;
+}
+
+.text-center a {
+    color: #39FF14; /* Enlace verde neón */
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+    color: #39FF14;
+}

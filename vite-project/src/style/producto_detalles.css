@@ -1,0 +1,136 @@
+.my-container{
+    border: 2px solid #39FF14;
+    background-color: #1a1a1a;
+    max-width: 1200px;    /* Limita el ancho máximo */
+    margin: auto;
+    padding: 50px;       /* Espacio interno */
+    box-sizing: border-box;
+}
+
+.producto-detalle {
+    display: flex;
+    flex-wrap: wrap;           /* Permite que los elementos bajen si no hay espacio */
+    justify-content: center;   /* Centra el contenido */
+    gap: 32px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.imagen-principal,
+.info-detalle {
+    flex: 1 1 00px;       /* Crece, reduce, mínimo 300px */
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.producto-detalle h2 {
+    color: #FFFFFF;
+}
+
+.descripcion {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #D3D3D3;
+}
+
+/*CONTENEDOR DE PRODUCTOS RELACIONADOS */
+.relacionados-container {
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #212529;
+    border-top: 2px solid #39FF14;
+    border-radius: 8px;
+}
+
+.relacionados-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* BARRA */
+.relacionados-barra {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* CADA PRODUCTO */
+.no-relacionado {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 20px 0;
+}
+.relacionado {
+    text-align: center;
+    color: #D3D3D3;
+    max-width: 150px;
+    cursor: pointer;
+}
+
+.relacionado img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid #39FF14;
+    background-color: #ffffff1e;
+    margin-bottom: 10px;
+}
+
+.relacionado:hover {
+    box-shadow: 0 0 12px #39FF14;
+    border-radius: 6px;
+}
+
+.precio {
+    font-size: 1.5rem;
+    color: #39FF14;
+    margin-bottom: 1.5rem;
+}
+
+
+/*CARRITO*/
+.btn-agregar {
+    margin: 30px auto 30px;
+    background-color: #39FF14;
+    color: #000000;
+    padding: 0.5rem 2.5rem;
+    font-size: 1.1rem;
+    border: 2px  solid #39FF14;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-agregar:hover {
+    background-color: #39FF14;
+    border-color: #39FF14;
+    box-shadow: 0 0 10px #39FF14;
+}
+
+/*BARRA DE MINIATURAS*/
+.miniaturas-barra {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.miniatura {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    border: 2px solid #39FF14;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    background-color:#212529;
+    margin-top: 40px;
+}
+
+.miniatura:hover {
+    box-shadow: 0 0 8px #39FF14;
+}

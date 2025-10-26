@@ -1,0 +1,50 @@
+.header{
+	background-color: #1f1f1f;
+	border-bottom: 1px solid #1E90FF;
+	padding: 1rem 0;
+}
+.header header{
+	padding: 0 1rem;
+}
+.d-flex.justify-content-center.align-items-center {
+	padding: 3rem 1rem;
+	flex: 1;
+}
+header svg{
+	fill: #1E90FF;
+	transition: 0.3s ease;
+}
+header svg:hover{
+	fill: #39FF14;
+}
+
+.btn-outline-primary {
+  color: #39FF14;
+  border-color: #39FF14;
+}
+
+.btn-outline-primary:hover {
+  background-color: #39FF14;
+  color: #1f1f1f; /* Texto oscuro sobre fondo neón */
+  border-color: #39FF14;
+}
+
+.btn-outline-light {
+  color: #39FF14; /* Color del icono del carrito */
+  border-color: #39FF14;
+}
+
+.btn-outline-light:hover {
+  background-color: #39FF14;
+  color: #1f1f1f; /* Icono oscuro sobre fondo neón */
+  border-color: #39FF14;
+}
+
+.navbar-nav .nav-link {
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #39FF14 !important;
+}
