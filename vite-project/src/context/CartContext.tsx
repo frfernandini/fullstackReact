@@ -63,9 +63,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-    const clearCart = () => {
-        if (window.confirm("¿Estás seguro de que quieres vaciar el carrito?")) {
-            setCartItems([]);
+    const clearCart = (mostrarConfirm: boolean = true) => {
+        if (!mostrarConfirm || window.confirm("¿Estás seguro de que quieres vaciar el carrito?")) {
+            setCartItems([]); // vacía el carrito
         }
     };
 

@@ -7,8 +7,7 @@ const Home = () => {
   const { products: productsMap } = useProducts();
   const productos = Object.values(productsMap);
 
-  // Get products with offers
-  const productosEnOferta = productos.filter(p => p.oferta).slice(0, 4); // Show up to 4 products
+  const productosEnOferta = productos.filter(p => p.oferta).slice(0, 4);
 
   return (
     <div>

@@ -1,0 +1,247 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow-y: auto; 
+    padding: 20px; 
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #dc3545;
+}
+
+/* Modal tamaños */
+.carrito-modal .modal-content,
+.pago-fallido-modal .modal-content,
+.pago-exitoso-modal .modal-content {
+    max-width: 850px; 
+    width: 100%;
+}
+
+/* Formulario */
+.form-section-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #007bff; /* Color primario */
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #007bff20;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.flex-item { flex: 1; }
+.flex-item-large { flex: 3; }
+.flex-item-small { flex: 1; }
+
+.form-group input, .form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.form-group input:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95em;
+    color: #000000;
+}
+
+/* Inputs deshabilitados para resumen */
+input:disabled, textarea:disabled {
+    background-color: #dfdfdf;
+    color: #000000;
+    cursor: default;
+    border-color: #0080ff;
+}
+
+/* Inputs habilitados para resumen */
+input:enabled, textarea:enabled {
+    background-color: #dfdfdf;
+    color: #000000;
+    cursor: text;
+    border-color: #0080ff;
+}
+
+
+/* Tabla de Productos */
+.compra-table-container {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.compra-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.compra-table img {
+    width: 60px; 
+    height: 60px; 
+    object-fit: cover; 
+    border-radius: 4px;
+}
+
+.compra-table th, .compra-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+    vertical-align: middle;
+    color: #000000;
+}
+
+.compra-table thead th {
+    background-color: #00000046;
+    font-weight: 600;
+    color: #000000;
+}
+
+.compra-table tfoot td {
+    border-top: 2px solid #0b6b02d2;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: #39FF14;
+}
+
+/* Botones */
+.btn-full-width {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s;
+    margin-top: 15px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+.btn-success:hover { background-color: #218838; }
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+.btn-primary:hover { background-color: #0069d9; }
+
+.btn-red {
+    background-color: #dc3545;
+    color: #fff;
+}
+.btn-red:hover { background-color: #c82333; }
+
+.btn-red-secondary {
+    background-color: #6c757d; /* Gris para "Cerrar" en error */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+.btn-red-secondary:hover { background-color: #5a6268; }
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+.btn-secondary:hover { background-color: #5a6268; }
+
+
+/* Mensaje de Error/Éxito */
+.mensaje-error, .mensaje-exito {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.mensaje-error {
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+}
+
+.mensaje-exito {
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+}
+
+
+.acciones-finales {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}

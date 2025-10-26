@@ -220,3 +220,58 @@ h1 {
     color: #000;
     border-radius: 4px;
 }
+
+/* Dropdown funcional */
+#navbar-filtro-categorias .dropdown-menu {
+    display: none; /* oculto por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1f1f1f;
+    border: 2px solid #39FF14;
+    border-radius: 6px;
+    min-width: 150px;
+    z-index: 999;
+    flex-direction: column;
+    padding: 5px 0;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Mostrar el dropdown */
+#navbar-filtro-categorias .dropdown-menu.show {
+    display: flex;
+}
+
+/* Estilo de items */
+#navbar-filtro-categorias .dropdown-menu li a {
+    display: block;
+    padding: 5px 15px;
+    color: #39FF14;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#navbar-filtro-categorias .dropdown-menu li a:hover {
+    background-color: #39FF14;
+    color: #000;
+    border-radius: 4px;
+}
+
+/* Botón Quitar Filtro */
+#btnMostrarTodos {
+    color: #39FF14;
+    border: 2px solid #39FF14;
+    background-color: #000000d2;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #39FF14;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+#btnMostrarTodos:hover {
+    box-shadow: 0 0 10px #39FF14;
+    background-color: #000;
+}

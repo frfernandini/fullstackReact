@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { Compra } from '../pages/Compra';
 import '../style/carrito.css';
 
 const Carrito: React.FC = () => {
     const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+    const [mostrarCheckout, setMostrarCheckout] = useState(false);
 
     const calcularPrecioFinal = (item: any) => {
         const tieneOferta = item.oferta && (item.descuento ?? 0) > 0;
@@ -14,15 +16,16 @@ const Carrito: React.FC = () => {
     };
 
     const subtotal = cartItems.reduce((total, item) => total + calcularPrecioFinal(item) * item.cantidad, 0);
-    const total = subtotal; // Asumiendo envío gratis
 
-    const procederAlPago = () => {
+    const abrirCheckout = () => {
         if (cartItems.length === 0) {
             alert("Tu carrito está vacío. Agrega algunos productos antes de proceder al pago.");
             return;
         }
-        alert("Función de pago no implementada aún. ¡Gracias por tu compra!");
+        setMostrarCheckout(true);
     };
+
+    const cerrarCheckout = () => setMostrarCheckout(false);
 
     return (
         <main className="container my-5">
@@ -118,10 +121,10 @@ const Carrito: React.FC = () => {
                                 <div className="d-flex justify-content-between mb-3">
                                     <h5>Total:</h5>
                                     <h5 className="total-price" id="total-price" style={{ color: 'rgb(4, 129, 20)' }}>
-                                        $ {total.toLocaleString()}
+                                        $ {subtotal.toLocaleString()}
                                     </h5>
                                 </div>
-                                <button className="btn btn-success w-100 py-2" onClick={procederAlPago}>
+                                <button className="btn btn-success w-100 py-2" onClick={abrirCheckout}>
                                     <i className="bi bi-credit-card"></i> PAGAR
                                 </button>
                                 <p className="text-muted text-center mt-2 small">
@@ -132,8 +135,24 @@ const Carrito: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Ventana de Checkout */}
+            {mostrarCheckout && (
+                <Compra
+                    productos={cartItems.map(item => ({
+                        id: parseInt(item.id.replace(/\D/g, "")) || 0,
+                        imagen: item.imagen,
+                        nombre: item.titulo,
+                        precio: calcularPrecioFinal(item),
+                        cantidad: item.cantidad
+                    }))}
+                    onClose={cerrarCheckout}
+                    clearCart={clearCart} // Para vaciar el carrito al finalizar
+                />
+            )}
         </main>
     );
 };
 
 export default Carrito;
+
