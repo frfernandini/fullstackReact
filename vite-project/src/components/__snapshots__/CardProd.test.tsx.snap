@@ -1,0 +1,105 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CardProd > Snapshot: Debería mantener la estructura del componente con oferta 1`] = `
+<a
+  class="card-product"
+  data-discover="true"
+  href="/productos/2"
+  role="link"
+>
+  <img
+    alt="Té Verde Orgánico"
+    src="/img/te-verde.jpg"
+  />
+  <div
+    class="card-content"
+  >
+    <h3
+      class="card-titulo"
+    >
+      Té Verde Orgánico
+    </h3>
+    <div
+      class="card-precio"
+    >
+      <p>
+        <span
+          class="text-muted text-decoration-line-through"
+        >
+          $
+          12,000
+        </span>
+        <br />
+        <span
+          class="fw-bold text-success"
+        >
+          $
+          9,600
+        </span>
+      </p>
+      <span
+        class="badge bg-danger"
+      >
+        -
+        20
+        % OFF
+      </span>
+    </div>
+    <p
+      class="card-desc"
+    >
+      Té verde natural con propiedades antioxidantes
+    </p>
+  </div>
+  <button
+    class="btn-agregar"
+  >
+    <i
+      class="bi bi-cart-plus"
+    />
+     Agregar al Carrito
+  </button>
+</a>
+`;
+
+exports[`CardProd > Snapshot: Debería mantener la estructura del componente sin oferta 1`] = `
+<a
+  class="card-product"
+  data-discover="true"
+  href="/productos/1"
+  role="link"
+>
+  <img
+    alt="Café Colombiano Premium"
+    src="/img/cafe-colombiano.jpg"
+  />
+  <div
+    class="card-content"
+  >
+    <h3
+      class="card-titulo"
+    >
+      Café Colombiano Premium
+    </h3>
+    <p
+      class="card-precio"
+    >
+      $
+      15,000
+    </p>
+    <p
+      class="card-desc"
+    >
+      Café de alta calidad con notas frutales
+    </p>
+  </div>
+  <button
+    class="btn-agregar"
+  >
+    <i
+      class="bi bi-cart-plus"
+    />
+     Agregar al Carrito
+  </button>
+</a>
+`;
