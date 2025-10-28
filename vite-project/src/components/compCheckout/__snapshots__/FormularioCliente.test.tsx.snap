@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormularioCliente > Snapshot: Debería mantener la estructura del formulario con datos 1`] = `
+<div
+  class="form-section-title"
+>
+  Información del cliente
+</div>
+`;
+
+exports[`FormularioCliente > Snapshot: Debería mantener la estructura del formulario vacío 1`] = `
+<div
+  class="form-section-title"
+>
+  Información del cliente
+</div>
+`;

@@ -1,0 +1,201 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ItemCarrito > Snapshot: Debería mantener la estructura del componente con oferta 1`] = `
+<div
+  class="card mb-3"
+>
+  <div
+    class="card-body"
+  >
+    <div
+      class="row align-items-center"
+    >
+      <div
+        class="col-md-2"
+      >
+        <img
+          alt="mouse"
+          class="img-fluid rounded"
+          src="public/img/mouse.png"
+        />
+      </div>
+      <div
+        class="col-md-3"
+      >
+        <h6
+          class="card-title"
+        >
+          mouse
+        </h6>
+        <p
+          class="card-text text-muted"
+        >
+          mouses
+        </p>
+        <span
+          class="badge bg-success"
+        >
+          -
+          20
+          % OFF
+        </span>
+      </div>
+      <div
+        class="col-md-2"
+      >
+        <p
+          class="mb-0"
+        >
+          <span
+            class="text-decoration-line-through text-muted"
+          >
+            $
+            8,000
+          </span>
+          <br />
+          <strong>
+            $
+            6,400
+          </strong>
+        </p>
+      </div>
+      <div
+        class="col-md-2"
+      >
+        <div
+          class="input-group"
+        >
+          <button
+            class="btn btn-outline-secondary btn-sm"
+          >
+            -
+          </button>
+          <input
+            class="form-control form-control-sm text-center"
+            min="1"
+            type="number"
+            value="3"
+          />
+          <button
+            class="btn btn-outline-secondary btn-sm"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div
+        class="col-md-2 text-end"
+      >
+        <p
+          class="mb-0"
+        >
+          <strong>
+            $
+            19,200
+          </strong>
+        </p>
+        <button
+          class="btn btn-danger btn-sm"
+        >
+          <i
+            class="bi bi-trash"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ItemCarrito > Snapshot: Debería mantener la estructura del componente sin oferta 1`] = `
+<div
+  class="card mb-3"
+>
+  <div
+    class="card-body"
+  >
+    <div
+      class="row align-items-center"
+    >
+      <div
+        class="col-md-2"
+      >
+        <img
+          alt="catan"
+          class="img-fluid rounded"
+          src="/public/img/catan.png"
+        />
+      </div>
+      <div
+        class="col-md-3"
+      >
+        <h6
+          class="card-title"
+        >
+          catan
+        </h6>
+        <p
+          class="card-text text-muted"
+        >
+          teclados
+        </p>
+      </div>
+      <div
+        class="col-md-2"
+      >
+        <p
+          class="mb-0"
+        >
+          <strong>
+            $
+            10,000
+          </strong>
+        </p>
+      </div>
+      <div
+        class="col-md-2"
+      >
+        <div
+          class="input-group"
+        >
+          <button
+            class="btn btn-outline-secondary btn-sm"
+          >
+            -
+          </button>
+          <input
+            class="form-control form-control-sm text-center"
+            min="1"
+            type="number"
+            value="2"
+          />
+          <button
+            class="btn btn-outline-secondary btn-sm"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div
+        class="col-md-2 text-end"
+      >
+        <p
+          class="mb-0"
+        >
+          <strong>
+            $
+            20,000
+          </strong>
+        </p>
+        <button
+          class="btn btn-danger btn-sm"
+        >
+          <i
+            class="bi bi-trash"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
