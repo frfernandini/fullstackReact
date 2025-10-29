@@ -50,12 +50,12 @@ exports[`ItemCarrito > Snapshot: Debería mantener la estructura del componente 
             class="text-decoration-line-through text-muted"
           >
             $
-            8,000
+            8.000
           </span>
           <br />
           <strong>
             $
-            6,400
+            6.400
           </strong>
         </p>
       </div>
@@ -91,7 +91,7 @@ exports[`ItemCarrito > Snapshot: Debería mantener la estructura del componente 
         >
           <strong>
             $
-            19,200
+            19.200
           </strong>
         </p>
         <button
@@ -148,7 +148,7 @@ exports[`ItemCarrito > Snapshot: Debería mantener la estructura del componente 
         >
           <strong>
             $
-            10,000
+            10.000
           </strong>
         </p>
       </div>
@@ -184,7 +184,7 @@ exports[`ItemCarrito > Snapshot: Debería mantener la estructura del componente 
         >
           <strong>
             $
-            20,000
+            20.000
           </strong>
         </p>
         <button
