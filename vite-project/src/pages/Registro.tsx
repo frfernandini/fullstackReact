@@ -8,14 +8,65 @@ const Registro: React.FC = () => {
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [confirmContrasena, setConfirmContrasena] = useState('');
+    const [errors, setErrors] = useState({
+        nombre: '',
+        correo: '',
+        contrasena: '',
+        confirmContrasena: ''
+    });
     const navigate = useNavigate();
     const { addUser } = useUsers();
+
+    const validateEmail = (email: string): boolean => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validateForm = (): boolean => {
+        const newErrors = {
+            nombre: '',
+            correo: '',
+            contrasena: '',
+            confirmContrasena: ''
+        };
+        let isValid = true;
+
+        // Validar nombre
+        if (nombre.trim().length < 3) {
+            newErrors.nombre = 'El nombre debe tener al menos 3 caracteres';
+            isValid = false;
+        }
+
+        // Validar correo
+        if (!correo.trim()) {
+            newErrors.correo = 'El correo electrónico es obligatorio';
+            isValid = false;
+        } else if (!validateEmail(correo)) {
+            newErrors.correo = 'El formato del correo es inválido (ejemplo: correo@gmail.com)';
+            isValid = false;
+        }
+
+        // Validar contraseña
+        if (contrasena.length < 6) {
+            newErrors.contrasena = 'La contraseña debe tener al menos 6 caracteres';
+            isValid = false;
+        }
+
+        // Validar confirmación de contraseña
+        if (confirmContrasena !== contrasena) {
+            newErrors.confirmContrasena = 'Las contraseñas no coinciden';
+            isValid = false;
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (contrasena !== confirmContrasena) {
-            alert("Las contraseñas no coinciden.");
+        // Validar formulario antes de enviar
+        if (!validateForm()) {
             return;
         }
 
@@ -41,7 +92,7 @@ const Registro: React.FC = () => {
                     <div className="form-floating mb-2">
                         <input
                             type="text"
-                            className="form-control"
+                            className={`form-control ${errors.nombre ? 'is-invalid' : ''}`}
                             id="floatingname"
                             placeholder="Nombre completo"
                             value={nombre}
@@ -49,11 +100,16 @@ const Registro: React.FC = () => {
                             required
                         />
                         <label htmlFor="floatingname">Nombre completo</label>
+                        {errors.nombre && (
+                            <div className="invalid-feedback d-block">
+                                {errors.nombre}
+                            </div>
+                        )}
                     </div>
                     <div className="form-floating mb-2">
                         <input
                             type="email"
-                            className="form-control"
+                            className={`form-control ${errors.correo ? 'is-invalid' : ''}`}
                             id="floatingcorreo"
                             placeholder="Correo electronico"
                             value={correo}
@@ -61,11 +117,16 @@ const Registro: React.FC = () => {
                             required
                         />
                         <label htmlFor="floatingcorreo">Correo electrónico</label>
+                        {errors.correo && (
+                            <div className="invalid-feedback d-block">
+                                {errors.correo}
+                            </div>
+                        )}
                     </div>
                     <div className="form-floating mb-2">
                         <input
                             type="password"
-                            className="form-control"
+                            className={`form-control ${errors.contrasena ? 'is-invalid' : ''}`}
                             id="floatingcontrasena"
                             placeholder="Contraseña"
                             value={contrasena}
@@ -73,11 +134,21 @@ const Registro: React.FC = () => {
                             required
                         />
                         <label htmlFor="floatingcontrasena">Contraseña</label>
+                        {errors.contrasena && (
+                            <div className="invalid-feedback d-block">
+                                {errors.contrasena}
+                            </div>
+                        )}
+                        {!errors.contrasena && contrasena.length > 0 && (
+                            <small className="text-muted d-block mt-1">
+                                Mínimo 6 caracteres ({contrasena.length}/6)
+                            </small>
+                        )}
                     </div>
                     <div className="form-floating mb-3">
                         <input
                             type="password"
-                            className="form-control"
+                            className={`form-control ${errors.confirmContrasena ? 'is-invalid' : ''}`}
                             id="floatingconfirmcontrasena"
                             placeholder="Confirmar contraseña"
                             value={confirmContrasena}
@@ -85,6 +156,11 @@ const Registro: React.FC = () => {
                             required
                         />
                         <label htmlFor="floatingconfirmcontrasena">Confirmar contraseña</label>
+                        {errors.confirmContrasena && (
+                            <div className="invalid-feedback d-block">
+                                {errors.confirmContrasena}
+                            </div>
+                        )}
                     </div>
                     
                     <button className="btn btn-primary w-100 py-2" type="submit">Registrar</button>
