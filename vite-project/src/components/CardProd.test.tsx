@@ -5,25 +5,25 @@ import { CardProd } from "./CardProd";
 import { CartProvider } from "../context/CartContext";
 import type { Producto } from "./Producto";
 
-// Mock de producto sin oferta
+// Mock de producto sin oferta 
 const mockProductoSinOferta: Producto = {
     id: '1',
-    titulo: 'Café Colombiano Premium',
-    precio: 15000,
-    descripcion: 'Café de alta calidad con notas frutales',
-    categoria: 'Café',
-    imagen: '/img/cafe-colombiano.jpg',
+    titulo: 'catan',
+    precio: 10000,
+    descripcion: 'catan',
+    categoria: 'teclados',
+    imagen: '/public/img/catan.png',
     oferta: false
 };
 
 // Mock de producto con oferta
 const mockProductoConOferta: Producto = {
     id: '2',
-    titulo: 'Té Verde Orgánico',
-    precio: 12000,
-    descripcion: 'Té verde natural con propiedades antioxidantes',
-    categoria: 'Té',
-    imagen: '/img/te-verde.jpg',
+    titulo: 'mouse',
+    precio: 8000,
+    descripcion: 'mouse ligero',
+    categoria: 'mouses',
+    imagen: 'public/img/mouse.png',
     oferta: true,
     descuento: 20
 };
@@ -49,14 +49,15 @@ describe('CardProd', () => {
     test("Debería renderizar correctamente un producto sin oferta", () => {
         renderWithProviders(mockProductoSinOferta);
 
-        // Verificar que el título se muestre
-        expect(screen.getByText('Café Colombiano Premium')).toBeDefined();
+        // Verificar que el título se muestre (buscando por rol de encabezado)
+        expect(screen.getByRole('heading', { name: 'catan' })).toBeDefined();
         
         // Verificar que el precio se muestre (con coma o punto según locale)
-        expect(screen.getByText(/\$15[.,]000/)).toBeDefined();
+        expect(screen.getByText(/\$10[.,]000/)).toBeDefined();
         
-        // Verificar que la descripción se muestre
-        expect(screen.getByText('Café de alta calidad con notas frutales')).toBeDefined();
+        // Verificar que la descripción y el título (ambos "catan") están presentes
+        const catanElements = screen.getAllByText('catan');
+        expect(catanElements.length).toBeGreaterThanOrEqual(2);
         
         // Verificar que el botón de agregar al carrito exista
         expect(screen.getByText(/Agregar al Carrito/i)).toBeDefined();
@@ -66,13 +67,13 @@ describe('CardProd', () => {
         renderWithProviders(mockProductoConOferta);
 
         // Verificar que el título se muestre
-        expect(screen.getByText('Té Verde Orgánico')).toBeDefined();
+        expect(screen.getByText('mouse')).toBeDefined();
         
         // Verificar que el precio original (tachado) se muestre (con coma o punto según locale)
-        expect(screen.getByText(/\$12[.,]000/)).toBeDefined();
+        expect(screen.getByText(/\$8[.,]000/)).toBeDefined();
         
-        // Verificar que el precio con descuento se muestre (12000 - 20% = 9600)
-        expect(screen.getByText(/\$9[.,]600/)).toBeDefined();
+        // Verificar que el precio con descuento se muestre (8000 - 20% = 6400)
+        expect(screen.getByText(/\$6[.,]400/)).toBeDefined();
         
         // Verificar que el badge de descuento se muestre
         expect(screen.getByText('-20% OFF')).toBeDefined();
@@ -88,7 +89,7 @@ describe('CardProd', () => {
         fireEvent.click(btnAgregar);
         
         // Verificar que se haya llamado a window.alert (por el addToCart)
-        expect(window.alert).toHaveBeenCalledWith('Café Colombiano Premium agregado al carrito');
+        expect(window.alert).toHaveBeenCalledWith('catan agregado al carrito');
     });
 
     test("Debería tener un link hacia la página de detalles del producto", () => {
@@ -132,7 +133,6 @@ describe('CardProd', () => {
 
         // Precio original: 10000
         // Descuento 30%: 10000 - 3000 = 7000
-        // Usar regex para aceptar tanto punto como coma como separador de miles
         expect(screen.getByText(/\$7[.,]000/)).toBeDefined();
         expect(screen.getByText('-30% OFF')).toBeDefined();
     });
