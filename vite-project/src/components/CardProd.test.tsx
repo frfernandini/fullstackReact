@@ -149,9 +149,9 @@ describe('CardProd', () => {
         renderWithProviders(mockProductoSinOferta);
 
         // Buscar la imagen por el alt
-        const imagen = screen.getByAltText('Café Colombiano Premium');
+        const imagen = screen.getByAltText('catan');
         
         // Verificar que la imagen tenga el src correcto
-        expect(imagen.getAttribute('src')).toBe('/img/cafe-colombiano.jpg');
+        expect(imagen.getAttribute('src')).toBe('/public/img/catan.png');
     });
 });

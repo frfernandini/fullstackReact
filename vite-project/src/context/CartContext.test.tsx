@@ -29,23 +29,23 @@ Object.defineProperty(window, 'localStorage', {
 // Mock de datos de productos para usar en los tests
 const mockProduct1: Producto = {
     id: '1',
-    titulo: 'Café Colombiano',
-    precio: 10,
-    descripcion: 'Un café suave y balanceado.',
-    categoria: 'Café',
-    imagen: 'colombiano.jpg',
+    titulo: 'catan',
+    precio: 10000,
+    descripcion: 'catan',
+    categoria: 'teclados',
+    imagen: '/public/img/catan.png',
     oferta: false
 };
 
 const mockProduct2: Producto = {
     id: '2',
-    titulo: 'Té Verde',
-    precio: 8,
-    descripcion: 'Té verde antioxidante.',
-    categoria: 'Té',
-    imagen: 'te_verde.jpg',
+    titulo: 'mouse',
+    precio: 8000,
+    descripcion: 'mouse ligero',
+    categoria: 'mouses',
+    imagen: 'public/img/mouse.png',
     oferta: true,
-    descuento: 10
+    descuento: 20
 };
 
 // Wrapper para proveer el contexto a nuestro hook en los tests

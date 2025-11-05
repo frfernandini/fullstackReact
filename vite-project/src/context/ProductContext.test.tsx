@@ -29,23 +29,23 @@ Object.defineProperty(window, 'localStorage', {
 // Mock de productos de prueba
 const mockProduct1: Producto = {
     id: '100',
-    titulo: 'Café Test',
-    precio: 5000,
-    descripcion: 'Café de prueba',
-    categoria: 'Café',
-    imagen: 'test.jpg',
+    titulo: 'catan',
+    precio: 10000,
+    descripcion: 'catan',
+    categoria: 'teclados',
+    imagen: '/public/img/catan.png',
     oferta: false
 };
 
 const mockProduct2: Producto = {
     id: '200',
-    titulo: 'Té Test',
-    precio: 3000,
-    descripcion: 'Té de prueba',
-    categoria: 'Té',
-    imagen: 'test2.jpg',
+    titulo: 'mouse',
+    precio: 8000,
+    descripcion: 'mouse ligero',
+    categoria: 'mouses',
+    imagen: 'public/img/mouse.png',
     oferta: true,
-    descuento: 10
+    descuento: 20
 };
 
 // Wrapper para proveer el contexto
@@ -93,8 +93,8 @@ describe('ProductContext', () => {
 
         const updatedProduct: Producto = {
             ...mockProduct1,
-            precio: 6000,
-            descripcion: 'Café actualizado'
+            precio: 12000,
+            descripcion: 'catan actualizado'
         };
 
         act(() => {
@@ -102,8 +102,8 @@ describe('ProductContext', () => {
         });
 
         // Debe mantener la misma cantidad de productos
-        expect(result.current.products['100'].precio).toBe(6000);
-        expect(result.current.products['100'].descripcion).toBe('Café actualizado');
+        expect(result.current.products['100'].precio).toBe(12000);
+        expect(result.current.products['100'].descripcion).toBe('catan actualizado');
     });
 
     test('debería eliminar un producto por su id', () => {
