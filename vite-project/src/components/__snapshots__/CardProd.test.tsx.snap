@@ -8,8 +8,8 @@ exports[`CardProd > Snapshot: Debería mantener la estructura del componente con
   role="link"
 >
   <img
-    alt="Té Verde Orgánico"
-    src="/img/te-verde.jpg"
+    alt="mouse"
+    src="public/img/mouse.png"
   />
   <div
     class="card-content"
@@ -17,7 +17,7 @@ exports[`CardProd > Snapshot: Debería mantener la estructura del componente con
     <h3
       class="card-titulo"
     >
-      Té Verde Orgánico
+      mouse
     </h3>
     <div
       class="card-precio"
@@ -27,14 +27,14 @@ exports[`CardProd > Snapshot: Debería mantener la estructura del componente con
           class="text-muted text-decoration-line-through"
         >
           $
-          12.000
+          8.000
         </span>
         <br />
         <span
           class="fw-bold text-success"
         >
           $
-          9.600
+          6.400
         </span>
       </p>
       <span
@@ -48,7 +48,7 @@ exports[`CardProd > Snapshot: Debería mantener la estructura del componente con
     <p
       class="card-desc"
     >
-      Té verde natural con propiedades antioxidantes
+      mouse ligero
     </p>
   </div>
   <button
@@ -70,8 +70,8 @@ exports[`CardProd > Snapshot: Debería mantener la estructura del componente sin
   role="link"
 >
   <img
-    alt="Café Colombiano Premium"
-    src="/img/cafe-colombiano.jpg"
+    alt="catan"
+    src="/public/img/catan.png"
   />
   <div
     class="card-content"
@@ -79,18 +79,18 @@ exports[`CardProd > Snapshot: Debería mantener la estructura del componente sin
     <h3
       class="card-titulo"
     >
-      Café Colombiano Premium
+      catan
     </h3>
     <p
       class="card-precio"
     >
       $
-      15.000
+      10.000
     </p>
     <p
       class="card-desc"
     >
-      Café de alta calidad con notas frutales
+      catan
     </p>
   </div>
   <button
