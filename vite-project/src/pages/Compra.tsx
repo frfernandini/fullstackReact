@@ -6,7 +6,7 @@ import { MensajeEstado } from "../components/compCheckout/MensajeEstado";
 import "../style/checkout.css";
 
 export type ProductoCheckout = {
-  id: number;
+  id: string; // Mantener como string para compatibilidad con otros componentes
   imagen: string;
   nombre: string;
   precio: number;

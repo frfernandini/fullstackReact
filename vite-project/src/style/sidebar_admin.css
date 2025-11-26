@@ -35,3 +35,29 @@ hr {
     border-color: #3498db;
     opacity: 0.5;
 }
+
+/* Mejorar diseño del sidebar */
+.sidebar-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Personalizar scroll del sidebar */
+.sidebar-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-container::-webkit-scrollbar-track {
+    background: #34495e;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}

@@ -62,7 +62,7 @@ const Registro: React.FC = () => {
         return isValid;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         // Validar formulario antes de enviar
@@ -70,15 +70,20 @@ const Registro: React.FC = () => {
             return;
         }
 
-        const { success, message } = addUser({
-            nombre,
-            email: correo,
-            password: contrasena,
-        });
+        try {
+            const { success, message } = await addUser({
+                nombre,
+                email: correo,
+                password: contrasena,
+            });
 
-        alert(message);
-        if (success) {
-            navigate("/login");
+            alert(message);
+            if (success) {
+                navigate('/login');
+            }
+        } catch (err) {
+            console.error('Error during registration:', err);
+            alert('Error al registrar usuario. Por favor, intenta de nuevo.');
         }
     };
 

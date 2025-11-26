@@ -95,6 +95,144 @@ html, body {
   position: relative;
 }
 
+/* Sección de ofertas simplificada */
+.ofertas-section {
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+
+/* Alertas personalizadas */
+.alert-info {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  border: 2px solid #39FF14;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, #f39c12, #d68910);
+  border: 2px solid #39FF14;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Spinner personalizado */
+.spinner-border-sm {
+  color: #39FF14 !important;
+}
+
+/* Botón de reintentar */
+.btn-outline-primary {
+  border-color: #39FF14;
+  color: #39FF14;
+  background: transparent;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #39FF14;
+  color: #000000;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Estilos para cards con oferta */
+.card-oferta {
+  position: relative;
+  border-color: #ff6b35 !important;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.8) !important;
+  animation: pulse-offer 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-offer {
+  from {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 1), 0 0 40px rgba(57, 255, 20, 0.3);
+  }
+}
+
+.card-oferta:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 35px rgba(255, 107, 53, 1) !important;
+}
+
+/* Badge de oferta */
+.oferta-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 10;
+  background: linear-gradient(45deg, #ff6b35, #ff4757);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 107, 53, 0.8);
+  animation: rotate-badge 3s linear infinite;
+  border: 3px solid #39FF14;
+}
+
+@keyframes rotate-badge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.oferta-badge span:first-child {
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 1;
+}
+
+.oferta-badge .descuento {
+  font-size: 14px;
+  font-weight: bold;
+  color: #39FF14;
+  text-shadow: 0 0 5px #000;
+}
+
+/* Precios con oferta */
+.card-precio-oferta {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.precio-original {
+  color: #ff6b35;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.precio-final {
+  margin-bottom: 8px;
+}
+
+.precio-grande {
+  font-size: 24px;
+  font-weight: bold;
+  color: #39FF14;
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+.ahorro {
+  color: #ff6b35;
+  font-weight: bold;
+  background: rgba(57, 255, 20, 0.1);
+  padding: 3px 8px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
 
 /*BOTÓN AGREGAR AL CARRITO*/
 .btn-agregar {

@@ -8,23 +8,37 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { users } = useUsers(); // Get users from context
+    const { login } = useUsers();
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError('');
+        setLoading(true);
 
-        const usuarioEncontrado = users.find(
-            (user) => user.email === email && user.password === password
-        );
+        try {
+            const result = await login(email, password);
+            if (result.success) {
+                setError('¡Inicio de sesión exitoso! Redirigiendo...');
 
-        if (usuarioEncontrado) {
-            setError('¡Inicio de sesión exitoso! Redirigiendo...');
-            // Here you would typically set some global state to indicate the user is logged in
-            setTimeout(() => {
-                navigate('/home');
-            }, 1000);
-        } else {
-            setError('Correo o contraseña no válidos. Por favor, inténtalo de nuevo.');
+                // Redirigir según rol (comprobación flexible)
+                setTimeout(() => {
+                    const roleStr = String(result.role || '').toUpperCase();
+                    if (roleStr.includes('ADMIN')) {
+                        navigate('/admin');
+                    } else {
+                        navigate('/home');
+                    }
+                }, 800);
+            } else {
+                setError(result.message);
+            }
+        } catch (err: any) {
+            console.error('Login error', err);
+            const msg = err?.message || 'Error al iniciar sesión';
+            setError(String(msg));
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -60,7 +74,9 @@ const Login: React.FC = () => {
                         <label htmlFor="contrasenaInput">Contraseña</label>
                     </div>
                     
-                    <button className="btn btn-primary w-100 py-2" type="submit">Iniciar Sesión</button>
+                    <button className="btn btn-primary w-100 py-2" type="submit" disabled={loading}>
+                        {loading ? 'Validando...' : 'Iniciar Sesión'}
+                    </button>
                     
                     {error && <div className={`alert ${error.includes('exitoso') ? 'alert-success' : 'alert-danger'} text-center mt-3`}>{error}</div>}
                     

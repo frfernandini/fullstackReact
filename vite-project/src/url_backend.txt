@@ -1,0 +1,5 @@
+#BACKEND EN PRODUCCIÓN
+#VITE_BACKEND_URL=http://levelup.us-east-1.elasticbeanstalk.com
+
+#BACKEND DE MANERA LOCAL
+#VITE_BACKEND_URL=http://localhost:5000

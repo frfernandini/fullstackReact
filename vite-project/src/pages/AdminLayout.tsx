@@ -9,9 +9,9 @@ import AdminAgregarUsuario from './AdminAgregarUsuario';
 
 const AdminLayout: React.FC = () => {
     return (
-        <div className="d-flex">
+        <div className="d-flex" style={{ height: '100vh', overflow: 'hidden' }}>
             <SidebarAdmin />
-            <div className="main-content flex-grow-1">
+            <div className="main-content flex-grow-1" style={{ overflow: 'auto', height: '100vh' }}>
                 <Routes>
                     <Route path="/" element={<Admin />} />
                     <Route path="productos" element={<AdminListadoProductos />} />

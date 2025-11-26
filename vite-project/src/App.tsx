@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Registro from './pages/Registro';
 import Carrito from './pages/Carrito';
 import AdminLayout from './pages/AdminLayout';
+import ProtectedRoute from './components/protectedRoute';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       {!isAdminRoute && <Header />}
       <main>
         <Routes>
+          {/* Rutas públicas */}
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/nosotros" element={<Nosotros />} />
@@ -31,8 +33,16 @@ function App() {
           <Route path="/productos/:id" element={<ProductoDetalles />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
-          <Route path="/carrito" element={<Carrito />} />
-          <Route path="/admin/*" element={<AdminLayout />} />
+
+          {/* Rutas protegidas solo para usuarios logueados */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/carrito" element={<Carrito />} />
+          </Route>
+
+          {/* Panel admin → solo admin */}
+          <Route element={<ProtectedRoute adminOnly />}>
+            <Route path="/admin/*" element={<AdminLayout />} />
+          </Route>
         </Routes>
       </main>
       {!isAdminRoute && <Footer />}

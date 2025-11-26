@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -7,7 +9,7 @@ import { ResumenPedido } from '../components/compCarrito.tsx/ResumenPedido';
 import '../style/carrito.css';
 
 export const Carrito: React.FC = () => {
-  const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, clearCart, loading } = useCart();
   const [mostrarCheckout, setMostrarCheckout] = useState(false);
 
   const calcularPrecioFinal = (item: any) => {
@@ -32,6 +34,25 @@ export const Carrito: React.FC = () => {
 
   const cerrarCheckout = () => setMostrarCheckout(false);
 
+  const handleClearCart = async () => {
+    try {
+      await clearCart();
+    } catch (error) {
+      console.error('Error clearing cart:', error);
+      alert('Error al vaciar el carrito. Por favor intenta de nuevo.');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Cargando carrito...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <main className="container my-5">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -40,7 +61,7 @@ export const Carrito: React.FC = () => {
           <Link to="/productos" className="btn btn-outline-secondary me-2">
             <i className="bi bi-arrow-left"></i> Seguir Comprando
           </Link>
-          <button className="btn btn-outline-danger" onClick={clearCart}>
+          <button className="btn btn-outline-danger" onClick={handleClearCart}>
             <i className="bi bi-trash"></i> Vaciar Carrito
           </button>
         </div>
@@ -78,7 +99,7 @@ export const Carrito: React.FC = () => {
       {mostrarCheckout && (
         <Compra
           productos={cartItems.map(item => ({
-            id: parseInt(item.id.replace(/\D/g, "")) || 0,
+            id: String(item.id),             
             imagen: item.imagen,
             nombre: item.titulo,
             precio: calcularPrecioFinal(item),

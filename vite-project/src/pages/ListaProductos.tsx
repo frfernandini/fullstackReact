@@ -1,20 +1,25 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import CardProd from '../components/CardProd';
 import { useProducts } from '../context/ProductContext';
+import { useCategories } from '../context/CategoryContext';
 import '../style/lista_productos.css';
 
 const ListaProductos = () => {
-  const { products: productsMap } = useProducts();
+  const { products: productsMap, loading: productsLoading, error: productsError } = useProducts();
+  const { categories, loading: categoriesLoading } = useCategories();
   const products = useMemo(() => Object.values(productsMap), [productsMap]);
 
   const [dropdownAbierto, setDropdownAbierto] = useState(false);
   const [filtro, setFiltro] = useState<string>('Todos');
 
-  const categorias = useMemo(() => ['Todos', ...new Set(products.map((p) => p.categoria))], [products]);
+  const categorias = useMemo(() => {
+    const categoryNames = categories.filter(c => c.activo).map(c => c.nombre);
+    return ['Todos', ...categoryNames];
+  }, [categories]);
 
   const productosFiltrados = useMemo(() => {
     if (filtro === 'Todos') return products;
-    return products.filter((p) => p.categoria === filtro);
+    return products.filter((p) => (p.categoria?.nombre ?? 'Sin categoría') === filtro);
   }, [filtro, products]);
 
   // Ref para cerrar dropdown al hacer click fuera
@@ -29,6 +34,27 @@ const ListaProductos = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  if (productsLoading || categoriesLoading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Cargando productos...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (productsError) {
+    return (
+      <div className="container mt-5">
+        <div className="alert alert-danger text-center">
+          <h4>Error al cargar productos</h4>
+          <p>{productsError}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main className="container productos-container">

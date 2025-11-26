@@ -16,14 +16,25 @@ export const CardProd: React.FC<CardProdProps> = ({ producto }) => {
     ? Math.round(precioOriginal - (precioOriginal * (producto.descuento ?? 0) / 100))
     : precioOriginal;
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(producto);
+    try {
+      await addToCart(producto);
+    } catch (error) {
+      console.error('Error in CardProd addToCart:', error);
+    }
   };
 
   return (
-    <Link to={`/productos/${producto.id}`} className="card-product" role="link">
+    <Link to={`/productos/${producto.id}`} className={`card-product ${tieneOferta ? 'card-oferta' : ''}`} role="link">
+      {tieneOferta && (
+        <div className="oferta-badge">
+          <span>🔥 OFERTA 🔥</span>
+          <span className="descuento">-{producto.descuento}%</span>
+        </div>
+      )}
+      
       <img src={producto.imagen} alt={producto.titulo} />
 
       <div className="card-content">
@@ -32,13 +43,16 @@ export const CardProd: React.FC<CardProdProps> = ({ producto }) => {
         {!tieneOferta ? (
           <p className="card-precio">${precioOriginal.toLocaleString()}</p>
         ) : (
-          <div className="card-precio">
-            <p>
-              <span className="text-muted text-decoration-line-through">${precioOriginal.toLocaleString()}</span>
-              <br />
-              <span className="fw-bold text-success">${precioFinal.toLocaleString()}</span>
-            </p>
-            <span className="badge bg-danger">-{producto.descuento}% OFF</span>
+          <div className="card-precio-oferta">
+            <div className="precio-original">
+              <span className="text-decoration-line-through">${precioOriginal.toLocaleString()}</span>
+            </div>
+            <div className="precio-final">
+              <span className="precio-grande">${precioFinal.toLocaleString()}</span>
+            </div>
+            <div className="ahorro">
+              <small>¡Ahorras ${(precioOriginal - precioFinal).toLocaleString()}!</small>
+            </div>
           </div>
         )}
 
@@ -46,7 +60,7 @@ export const CardProd: React.FC<CardProdProps> = ({ producto }) => {
       </div>
 
       <button className="btn-agregar" onClick={handleAddToCart}>
-        <i className="bi bi-cart-plus" /> Agregar al Carrito
+        <i className="bi bi-cart-plus" /> {tieneOferta ? '🛒 ¡Aprovecha la Oferta!' : 'Agregar al Carrito'}
       </button>
     </Link>
   );
