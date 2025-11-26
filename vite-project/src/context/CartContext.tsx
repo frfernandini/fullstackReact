@@ -79,8 +79,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const syncCartWithServer = async (localCart: CartItem[]) => {
         if (!currentUser?.id || !isLoggedIn) return;
         
-        const userId = Number(currentUser.id);
-        if (isNaN(userId)) return;
+        const userId = currentUser.id;
+        if (!userId || userId <= 0) return;
         
         try {
             // Si hay productos en el carrito local, sincronizar con el servidor
@@ -105,11 +105,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             setLoading(true);
             setError(null);
             
-            const userId = Number(currentUser.id);
-            if (isNaN(userId)) {
-                console.error('Invalid userId for loadCart:', currentUser.id);
+            // El currentUser.id ya debería ser un número válido
+            const userId = currentUser.id;
+            if (!userId || userId <= 0) {
+                console.error('Invalid userId for loadCart:', {
+                    userId,
+                    userObject: currentUser
+                });
+                setError('ID de usuario inválido');
                 return;
             }
+            
+            console.log('Loading cart for user ID:', userId);
 
             // Obtener carrito local antes de cargar desde servidor
             const localCartString = localStorage.getItem('carrito');
@@ -167,11 +174,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 });
             } else {
                 // Asegurar que tenemos IDs numéricos válidos
-                const userId = Number(currentUser.id);
+                const userId = currentUser.id;
                 const productId = Number(product.id);
                 
-                if (isNaN(userId) || isNaN(productId)) {
-                    throw new Error(`Invalid IDs: userId=${currentUser.id}, productId=${product.id}`);
+                if (!userId || isNaN(productId) || userId <= 0 || productId <= 0) {
+                    console.error('Invalid IDs detected:', {
+                        userId,
+                        originalProductId: product.id,
+                        convertedProductId: productId
+                    });
+                    throw new Error(`IDs inválidos: userId=${userId}, productId=${product.id}`);
                 }
                 
                 console.log('Adding to cart with valid IDs:', { userId, productId });
@@ -215,11 +227,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 // Usar respaldo de localStorage
                 setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
             } else {
-                const userId = Number(currentUser.id);
+                const userId = currentUser.id;
                 const numericProductId = Number(productId);
                 
-                if (isNaN(userId) || isNaN(numericProductId) || userId <= 0 || numericProductId <= 0) {
-                    throw new Error(`IDs inválidos: userId=${currentUser.id}, productId=${productId}`);
+                if (!userId || isNaN(numericProductId) || userId <= 0 || numericProductId <= 0) {
+                    throw new Error(`IDs inválidos: userId=${userId}, productId=${productId}`);
                 }
                     // Usar API
                 await carritoService.remove(userId, numericProductId);
@@ -270,11 +282,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                     )
                 );
             } else {
-                const userId = Number(currentUser.id);
+                const userId = currentUser.id;
                 const numericProductId = Number(productId);
                 
-                if (isNaN(userId) || isNaN(numericProductId) || userId <= 0 || numericProductId <= 0) {
-                    throw new Error(`IDs inválidos: userId=${currentUser.id}, productId=${productId}`);
+                if (!userId || isNaN(numericProductId) || userId <= 0 || numericProductId <= 0) {
+                    throw new Error(`IDs inválidos: userId=${userId}, productId=${productId}`);
                 }
                 
                 // Usar API - encontrar cantidad actual y ajustar
@@ -333,10 +345,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 // Usar respaldo de localStorage
                 setCartItems([]);
             } else {
-                const userId = Number(currentUser.id);
+                const userId = currentUser.id;
                 
-                if (isNaN(userId) || userId <= 0) {
-                    throw new Error(`ID de usuario inválido: ${currentUser.id}`);
+                if (!userId || userId <= 0) {
+                    throw new Error(`ID de usuario inválido: ${userId}`);
                 }
                 
                 // Use API

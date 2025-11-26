@@ -47,18 +47,45 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
                         }
                         
                         const payload = JSON.parse(atob(parts[1]));
+                        console.log('Token payload en checkAuthStatus:', payload); // Debug logging
                         
-                        // Validar que tengamos un ID válido
-                        const userId = payload.sub || payload.userId || payload.id;
+                        // El campo 'sub' es el identificador estándar en JWT
+                        let userId = payload.sub;
+                        
                         if (!userId) {
+                            console.error('Token payload:', payload);
+                            console.error('Campos disponibles:', Object.keys(payload));
                             throw new Error('No se encontró ID de usuario en el token');
                         }
                         
+                        console.log('ID extraído del token en checkAuthStatus:', userId);
+                        
+                        // Convertir a número si es posible
+                        let finalUserId: number;
+                        if (typeof userId === 'string' && userId.includes('@')) {
+                            // Si es un email, usar hash como ID temporal
+                            finalUserId = Math.abs(userId.split('').reduce((a, b) => {
+                                a = ((a << 5) - a) + b.charCodeAt(0);
+                                return a & a;
+                            }, 0));
+                            console.warn('Using hashed email as userId in checkAuthStatus:', finalUserId);
+                        } else {
+                            finalUserId = Number(userId);
+                            if (isNaN(finalUserId)) {
+                                // Si no es numérico, usar hash del string
+                                finalUserId = Math.abs(userId.toString().split('').reduce((a: number, b: string) => {
+                                    a = ((a << 5) - a) + b.charCodeAt(0);
+                                    return a & a;
+                                }, 0));
+                                console.warn('Using hashed string as userId in checkAuthStatus:', finalUserId);
+                            }
+                        }
+                        
                         setCurrentUser({
-                            id: userId,
+                            id: finalUserId,
                             nombre: payload.nombre || 'Usuario',
                             apellido: payload.apellido || '',
-                            email: payload.email || '',
+                            email: payload.email || userId.toString(),
                             telefono: payload.telefono || '',
                             direccion: payload.direccion || '',
                             ciudad: payload.ciudad || '',
@@ -107,15 +134,42 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
                     }
                     
                     const payload = JSON.parse(atob(parts[1]));
+                    console.log('Token payload completo:', payload); // Debug logging
                     
-                    // Validar que tengamos un ID válido
-                    const userId = payload.sub || payload.userId || payload.id;
+                    // El campo 'sub' es el identificador estándar en JWT
+                    let userId = payload.sub;
+                    
                     if (!userId) {
+                        console.error('Token payload:', payload);
+                        console.error('Campos disponibles:', Object.keys(payload));
                         throw new Error('No se encontró ID de usuario en el token');
                     }
                     
+                    console.log('ID extraído del token:', userId);
+                    
+                    // Convertir a número si es posible
+                    let finalUserId: number;
+                    if (typeof userId === 'string' && userId.includes('@')) {
+                        // Si es un email, usar hash como ID temporal
+                        finalUserId = Math.abs(userId.split('').reduce((a: number, b: string) => {
+                            a = ((a << 5) - a) + b.charCodeAt(0);
+                            return a & a;
+                        }, 0));
+                        console.warn('Using hashed email as userId:', finalUserId);
+                    } else {
+                        finalUserId = Number(userId);
+                        if (isNaN(finalUserId)) {
+                            // Si no es numérico, usar hash del string
+                            finalUserId = Math.abs(userId.toString().split('').reduce((a: number, b: string) => {
+                                a = ((a << 5) - a) + b.charCodeAt(0);
+                                return a & a;
+                            }, 0));
+                            console.warn('Using hashed string as userId:', finalUserId);
+                        }
+                    }
+                    
                     setCurrentUser({
-                        id: userId,
+                        id: finalUserId,
                         nombre: payload.nombre || 'Usuario',
                         apellido: payload.apellido || '',
                         email: payload.email || email,
