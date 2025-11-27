@@ -52,7 +52,7 @@ export const authService = {
     },
 
     register: async (payload: any): Promise<any> => {
-        return apiClient.post("/api/auth/register", payload);
+        return apiClient.post("/api/auth/registro", payload);
     },
 
     logout: (): void => {

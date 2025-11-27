@@ -28,7 +28,7 @@ apiClient.interceptors.request.use(
     const token = localStorage.getItem("token");
 
     // para NO enviar el token en login/register
-    if (token && !config.url?.includes("/api/auth/login") && !config.url?.includes("/api/auth/register")) {
+    if (token && !config.url?.includes("/api/auth/login") && !config.url?.includes("/api/auth/registro")) {
       (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
     }
 
