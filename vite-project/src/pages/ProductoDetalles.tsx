@@ -50,6 +50,13 @@ const ProductoDetalles: React.FC = () => {
 
     const handleAddToCart = async () => {
         if (producto) {
+
+            console.log('🔍 [ProductoDetalles] Producto completo:', producto);
+            console.log('🔍 [ProductoDetalles] ID del producto:', producto.id);
+            console.log('🔍 [ProductoDetalles] Tipo de ID:', typeof producto.id);
+            console.log('🔍 [ProductoDetalles] Precio:', producto.precio);
+            console.log('🔍 [ProductoDetalles] Propiedades:', Object.keys(producto));
+
             try {
                 await addToCart(producto);
             } catch (error) {

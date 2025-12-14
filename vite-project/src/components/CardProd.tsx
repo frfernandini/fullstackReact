@@ -19,6 +19,13 @@ export const CardProd: React.FC<CardProdProps> = ({ producto }) => {
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+
+    console.log('🔍 [CardProd] Producto completo:', producto);
+    console.log('🔍 [CardProd] ID del producto:', producto.id);
+    console.log('🔍 [CardProd] Tipo de ID:', typeof producto.id);
+    console.log('🔍 [CardProd] Precio:', producto.precio);
+    console.log('🔍 [CardProd] Propiedades:', Object.keys(producto));
+
     try {
       await addToCart(producto);
     } catch (error) {
