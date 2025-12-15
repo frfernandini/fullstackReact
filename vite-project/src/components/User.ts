@@ -7,6 +7,6 @@ export interface User {
     telefono?: string;
     direccion?: string;
     ciudad?: string;
-    password?: string; // Password might be optional depending on where it's used
+    password?: string; // Añadido campo password
     fechaRegistro: string;
 }

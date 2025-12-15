@@ -16,7 +16,7 @@ if (!baseURL) {
 
 const apiClient = axios.create({
   baseURL, // URL de Beanstalk o Local
-  timeout: 30000,
+  timeout: 80000,
   headers: {
     "Content-Type": "application/json",
   },

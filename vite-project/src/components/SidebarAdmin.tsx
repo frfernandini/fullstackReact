@@ -25,6 +25,11 @@ const SidebarAdmin: React.FC = () => {
                         Gestionar usuarios
                     </Link>
                 </li>
+                <li>
+                    <Link to="/admin/pedidos" className="nav-link link-body-emphasis">
+                        Gestionar Pedidos
+                    </Link>
+                </li>
             </ul>
             <hr />
             <div>

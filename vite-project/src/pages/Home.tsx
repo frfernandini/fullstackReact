@@ -22,7 +22,7 @@ const Home = () => {
   const productosEjemplo: Producto[] = [
     {
       id: 1001,
-      titulo: "Smartphone Galaxy Pro",
+      nombre: "Smartphone Galaxy Pro",
       precio: 899000,
       descripcion: "Último modelo con cámara profesional y pantalla AMOLED",
       categoria: {
@@ -38,7 +38,7 @@ const Home = () => {
     },
     {
       id: 1002,
-      titulo: "Auriculares Inalámbricos Premium",
+      nombre: "Auriculares Inalámbricos Premium",
       precio: 299000,
       descripcion: "Audio de alta calidad con cancelación de ruido",
       categoria: {
@@ -54,7 +54,7 @@ const Home = () => {
     },
     {
       id: 1003,
-      titulo: "Laptop Gaming Extreme",
+      nombre: "Laptop Gaming Extreme",
       precio: 2499000,
       descripcion: "Potencia máxima para gaming y trabajo profesional",
       categoria: {
@@ -70,7 +70,7 @@ const Home = () => {
     },
     {
       id: 1004,
-      titulo: "Smartwatch Deportivo",
+      nombre: "Smartwatch Deportivo",
       precio: 449000,
       descripcion: "Monitoreo completo de salud y fitness",
       categoria: {

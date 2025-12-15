@@ -8,7 +8,7 @@ export interface Categoria {
 
 export interface Producto {
     id: number;
-    titulo: string;
+    nombre: string;
     precio: number;
     descripcion: string;
     categoria: Categoria;   // ← aquí cambia

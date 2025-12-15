@@ -106,17 +106,13 @@ const ProductoDetalles: React.FC = () => {
     const relacionados = allProducts.filter((p: Producto) => p.categoria?.id === producto.categoria?.id && p.id !== producto.id).slice(0, 6);
 
     return (
-        <div className="container my-5">
+        <div className="my-container">
             <div className="producto-detalle">
                 <div className="imagen-principal">
-                    <img id="mainImage" src={mainImage} alt={producto.titulo} width="400" />
-                    <div className="miniaturas-barra">
-                        <img className="miniatura" src={producto.imagen} alt="miniatura" onClick={() => setMainImage(producto.imagen)} />
-                        {/* Asumiendo que hay más imágenes en el futuro */}
-                    </div>
+                    <img id="mainImage" src={mainImage} alt={producto.nombre} />
                 </div>
                 <div className="info-detalle">
-                    <h2>{producto.titulo}</h2>
+                    <h2>{producto.nombre}</h2>
                     <p className="descripcion">{producto.descripcion}</p>
                     {producto.oferta && (producto.descuento ?? 0) > 0 ? (
                         <div>
@@ -131,17 +127,21 @@ const ProductoDetalles: React.FC = () => {
                     )}
                     <button className="btn-agregar" onClick={handleAddToCart}>Agregar al Carrito</button>
                 </div>
+                <div className="miniaturas-barra">
+                    <img className="miniatura" src={producto.imagen} alt="miniatura" onClick={() => setMainImage(producto.imagen)} />
+                    {/* Asumiendo que hay más imágenes en el futuro */}
+                </div>
             </div>
 
-            <div className="relacionados-container mt-5">
+            <div className="relacionados-container">
                 <h3>Productos Relacionados</h3>
                 <div className="relacionados-barra">
                     {relacionados.length > 0 ? (
                         relacionados.map((rel: Producto) => (
                             <div key={rel.id} className="relacionado">
                                 <Link to={`/productos/${rel.id}`}>
-                                    <img src={rel.imagen} alt={rel.titulo} />
-                                    <p>{rel.titulo}</p>
+                                    <img src={rel.imagen} alt={rel.nombre} />
+                                    <p>{rel.nombre}</p>
                                 </Link>
                             </div>
                         ))

@@ -1,0 +1,225 @@
+/* Estilos consistentes con el panel de administración */
+
+/* Contenedor principal */
+.admin-pedidos-container {
+    background-color: #2c3e50;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Títulos */
+.admin-pedidos-container h2 {
+    color: #3498db;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Botones del admin */
+.admin-pedidos-container .btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.admin-pedidos-container .btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.admin-pedidos-container .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.admin-pedidos-container .btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.admin-pedidos-container .btn-outline-primary {
+    color: #3498db;
+    border-color: #3498db;
+}
+
+.admin-pedidos-container .btn-outline-primary:hover {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: #fff;
+}
+
+/* Tabla - Estilo consistente con AdminUsuarios y AdminProductos */
+.admin-pedidos-container .table {
+    background-color: #34495e;
+    color: #ffffff;
+    border: 1px solid #3498db;
+}
+
+.admin-pedidos-container .table thead {
+    background-color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+}
+
+.admin-pedidos-container .table thead th {
+    color: #3498db;
+    font-weight: 600;
+    border-color: #3498db;
+}
+
+.admin-pedidos-container .table tbody tr {
+    border-color: #3498db;
+}
+
+.admin-pedidos-container .table tbody tr:hover {
+    background-color: #2c3e50;
+}
+
+.admin-pedidos-container .table tbody td {
+    color: #000000;
+    vertical-align: middle;
+}
+
+/* Badges de estado */
+.badge-pendiente {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+}
+
+.badge-procesando {
+    background-color: #17a2b8;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+}
+
+.badge-enviado {
+    background-color: #6f42c1;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+}
+
+.badge-entregado {
+    background-color: #28a745;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+}
+
+.badge-cancelado {
+    background-color: #dc3545;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Cards de resumen - Consistente con el dashboard */
+.admin-pedidos-container .card {
+    background-color: #34495e;
+    border: 2px solid #3498db;
+    color: #ffffff;
+    transition: transform 0.2s;
+}
+
+.admin-pedidos-container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.admin-pedidos-container .card-title {
+    color: #3498db;
+    font-weight: 600;
+}
+
+.admin-pedidos-container .card-body {
+    padding: 1.5rem;
+}
+
+/* Modal - Estilo admin */
+.admin-pedidos-container .modal-content {
+    background-color: #34495e;
+    color: #ffffff;
+    border: 2px solid #3498db;
+}
+
+.admin-pedidos-container .modal-header {
+    border-bottom: 1px solid #3498db;
+}
+
+.admin-pedidos-container .modal-title {
+    color: #3498db;
+}
+
+.admin-pedidos-container .modal-body {
+    background-color: #2c3e50;
+}
+
+.admin-pedidos-container .modal-body .table {
+    margin-bottom: 0;
+}
+
+.admin-pedidos-container .btn-close {
+    filter: invert(1);
+}
+
+/* Select para cambiar estado */
+.admin-pedidos-container .form-select {
+    background-color: #2c3e50;
+    color: #ffffff;
+    border: 1px solid #3498db;
+}
+
+.admin-pedidos-container .form-select:focus {
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Grupos de botones de filtro */
+.admin-pedidos-container .btn-group .btn {
+    margin: 0;
+}
+
+/* Spinner de carga */
+.admin-pedidos-container .spinner-border {
+    color: #3498db;
+}
+
+/* Alertas */
+.admin-pedidos-container .alert {
+    background-color: #34495e;
+    border: 1px solid #3498db;
+    color: #ffffff;
+}
+
+.admin-pedidos-container .alert-danger {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+/* Texto muted */
+.admin-pedidos-container .text-muted {
+    color: #95a5a6 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-pedidos-container {
+        padding: 1rem;
+    }
+    
+    .admin-pedidos-container .table {
+        font-size: 0.875rem;
+    }
+    
+    .admin-pedidos-container .btn-group {
+        flex-direction: column;
+    }
+    
+    .admin-pedidos-container .btn-group .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}

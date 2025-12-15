@@ -101,7 +101,7 @@ export const Carrito: React.FC = () => {
           productos={cartItems.map(item => ({
             id: String(item.id),             
             imagen: item.imagen,
-            nombre: item.titulo,
+            nombre: item.nombre,
             precio: calcularPrecioFinal(item),
             cantidad: item.cantidad
           }))}

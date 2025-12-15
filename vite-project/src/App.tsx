@@ -12,6 +12,7 @@ import Registro from './pages/Registro';
 import Carrito from './pages/Carrito';
 import AdminLayout from './pages/AdminLayout';
 import ProtectedRoute from './components/protectedRoute';
+import PedidosUser from './pages/PedidosUser';
 import './App.css';
 
 function App() {
@@ -33,10 +34,11 @@ function App() {
           <Route path="/productos/:id" element={<ProductoDetalles />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
-
+        
           {/* Rutas protegidas solo para usuarios logueados */}
           <Route element={<ProtectedRoute />}>
             <Route path="/carrito" element={<Carrito />} />
+            <Route path="/pedidos" element={<PedidosUser />} /> {/* Nueva ruta para ver pedidos del usuario */}
           </Route>
 
           {/* Panel admin → solo admin */}

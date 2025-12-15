@@ -42,10 +42,10 @@ export const CardProd: React.FC<CardProdProps> = ({ producto }) => {
         </div>
       )}
       
-      <img src={producto.imagen} alt={producto.titulo} />
+      <img src={producto.imagen} alt={producto.nombre} />
 
       <div className="card-content">
-        <h3 className="card-titulo">{producto.titulo}</h3>
+        <h3 className="card-titulo">{producto.nombre}</h3>
 
         {!tieneOferta ? (
           <p className="card-precio">${precioOriginal.toLocaleString()}</p>
