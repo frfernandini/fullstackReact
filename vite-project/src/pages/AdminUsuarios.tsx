@@ -4,7 +4,7 @@ import { useUsers } from '../context/UserContext';
 import '../style/admin_usuario.css';
 
 const AdminUsuarios: React.FC = () => {
-    const { users, removeUser } = useUsers();
+    const { users, removeUser, currentUser } = useUsers();
 
     const handleRemoveUser = (email: string) => {
         if (window.confirm(`¿Estás seguro de que quieres eliminar al usuario con correo ${email}?`)) {
@@ -47,9 +47,13 @@ const AdminUsuarios: React.FC = () => {
                                     <td>{user.email}</td>
                                     <td>{new Date(user.fechaCreacion).toLocaleDateString()}</td>
                                     <td>
-                                        <button className="btn btn-sm btn-danger" onClick={() => handleRemoveUser(user.email)}>
-                                            <i className="bi bi-trash"></i> Eliminar
-                                        </button>
+                                        {currentUser?.email === user.email ? (
+                                            <span className="text-muted">No permitido</span>
+                                        ) : (
+                                            <button className="btn btn-sm btn-danger" onClick={() => handleRemoveUser(user.email)}>
+                                                <i className="bi bi-trash"></i> Eliminar
+                                            </button>
+                                        )}
                                     </td>
                                 </tr>
                             ))
