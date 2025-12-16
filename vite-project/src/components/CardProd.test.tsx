@@ -3,26 +3,43 @@ import { describe, expect, test, vi, beforeEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 import { CardProd } from "./CardProd";
 import { CartProvider } from "../context/CartContext";
-import type { Producto } from "./Producto";
+import type { Producto, Categoria } from "./Producto";
 
 // Mock de producto sin oferta 
+
+const mockCategoria1: Categoria = {
+    id: 1,
+    nombre: 'Juegos de mesa',
+    descripcion: 'Juegos de mesa variados',
+    imagen: '/public/img/catan.png',
+    activo: true
+};
+
+const mockCategoriaTest: Categoria = {
+    id: 1,
+    nombre: 'Esto es un Test',
+    descripcion: 'Test Descripcion',
+    imagen: '/public/img/catan.png',
+    activo: true
+};
+
 const mockProductoSinOferta: Producto = {
-    id: '1',
-    titulo: 'catan',
+    id: 1,
+    nombre: 'catan',
     precio: 10000,
     descripcion: 'catan',
-    categoria: 'teclados',
+    categoria: mockCategoria1,
     imagen: '/public/img/catan.png',
     oferta: false
 };
 
 // Mock de producto con oferta
 const mockProductoConOferta: Producto = {
-    id: '2',
-    titulo: 'mouse',
+    id: 2,
+    nombre: 'mouse',
     precio: 8000,
     descripcion: 'mouse ligero',
-    categoria: 'mouses',
+    categoria: mockCategoria1,
     imagen: 'public/img/mouse.png',
     oferta: true,
     descuento: 20
@@ -120,11 +137,11 @@ describe('CardProd', () => {
     test("Debería calcular correctamente el precio con descuento", () => {
         // Producto con 30% de descuento
         const productoDescuento30: Producto = {
-            id: '3',
-            titulo: 'Producto Test',
+            id: 3,
+            nombre: 'Producto Test',
             precio: 10000,
             descripcion: 'Descripción test',
-            categoria: 'Test',
+            categoria: mockCategoriaTest,
             imagen: '/img/test.jpg',
             oferta: true,
             descuento: 30

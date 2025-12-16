@@ -102,94 +102,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [cartItems, isLoggedIn]);
     
-    /*const syncCartWithServer = async (localCart: CartItem[]) => {
-        if (!currentUser?.id || !isLoggedIn) return;
-        
-        const userId = currentUser.id;
-        if (!userId || userId <= 0) return;
-        
-        try {
-            // Si hay productos en el carrito local, sincronizar con el servidor
-            for (const item of localCart) {
-                // Agregar el producto al carrito del servidor
-                await carritoService.add(userId, Number(item.id));
-                
-                // Si la cantidad es mayor a 1, usar increase para ajustar
-                for (let i = 1; i < item.cantidad; i++) {
-                    await carritoService.increase(userId, Number(item.id));
-                }
-            }
-        } catch (error) {
-            console.error('Error syncing local cart with server:', error);
-        }
-    };
-
-
-
-    const loadCart = async () => {
-        if (!currentUser?.id || !isLoggedIn) return;
-        
-        try {
-            setLoading(true);
-            setError(null);
-            
-            const userId = currentUser.id;
-            if (!userId || userId <= 0) {
-                console.error('Invalid userId for loadCart:', {
-                    userId,
-                    userObject: currentUser
-                });
-                setError('ID de usuario inválido');
-                return;
-            }
-            
-            console.log('📡 Loading cart for user ID:', userId);
-
-            // ✅ Cargar desde API
-            const response = await carritoService.getCarrito(userId);
-            const cartData = response.data;
-            
-            console.log('📦 Cart data from API:', JSON.stringify(cartData, null, 2));
-
-            // ✅ SIEMPRE limpiar localStorage cuando el usuario está logueado
-            localStorage.removeItem('carrito');
-            console.log('🗑️ localStorage limpiado');
-            
-            // ✅ Mapear datos de la API
-            const items = cartData.map((item: any) => {
-                console.log('🔍 Mapeando item:', {
-                    id: item.producto?.id,
-                    nombre: item.producto?.nombre,
-                    cantidad: item.cantidad
-                });
-                
-                return {
-                    ...item.producto,
-                    titulo: item.producto?.nombre || item.producto?.titulo, // ✅ Soportar ambos campos
-                    cantidad: item.cantidad || 1
-                };
-            });
-            
-            console.log('✅ Items finales:', items);
-            setCartItems(items);
-            
-        } catch (error) {
-            console.error('❌ Error loading cart from API:', error);
-            setError('Error al cargar el carrito');
-            
-            const localCartString = localStorage.getItem('carrito');
-            if (localCartString) {
-                try {
-                    const localCart = JSON.parse(localCartString);
-                    setCartItems(localCart);
-                } catch (parseError) {
-                    console.error('Error parsing local cart:', parseError);
-                }
-            }
-        } finally {
-            setLoading(false);
-        }
-    };*/
 
     const syncCartWithServer = async (localCart: CartItem[]) => {
         if (!currentUser?.id || !isLoggedIn) return;
@@ -275,7 +187,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             const response = await carritoService.getCarrito(userId);
             const cartData = response.data;
             
-            console.log('📦 Cart data from API:', JSON.stringify(cartData, null, 2));
+            //ESTO ES PARA REVISAR LA ESTRUCTURA QUE DEVUELVE LA API DE LOS PRODUCTOS
+            //console.log('📦 Cart data from API:', JSON.stringify(cartData, null, 2));
 
             //Limpiar localStorage una vez la sincronizacion este lista
             localStorage.removeItem('carrito');
@@ -310,10 +223,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-    
-
-
-    //CODIGO ANTIGUO EL DE ABAJO
 
     const addToCart = async (product: Producto) => {
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
@@ -358,12 +267,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                     }
                 });
             } else {
-                console.log('📡 [addToCart] Usuario autenticado - usando API');
+                console.log('📡[addToCart] Usuario autenticado - usando API');
                 
                 const userId = currentUser.id;
                 const productId = Number(product.id);
                 
-                console.log('📡 [addToCart] userId:', userId, 'productId:', productId);
+                console.log('📡[addToCart] userId:', userId, 'productId:', productId);
                 
                 if (!userId || isNaN(productId) || userId <= 0 || productId <= 0) {
                     console.error('❌ [addToCart] IDs inválidos:', { userId, productId });
@@ -526,13 +435,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                             console.log('✅ Respuesta decrease:', response.data);
                         }
                     }
-                    // ✅ SEGUNDO: Actualizar UI después de éxito en API
+                    // Actualizar UI después de éxito en API
                     setCartItems(prevItems =>
                         prevItems.map(item =>
                             item.id === productId ? { ...item, cantidad: newQuantity } : item
                         )
                     );
-                    //CODIGO ELIMINAR EVITAR BUCLE -> await loadCart(); // Reload cart to get updated data
                 }
             }
         } catch (error) {
@@ -559,7 +467,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
         try {
             setError(null);
-            //MANTENER LOADING DE MOMENTO
             setLoading(true);
             
             if (!isLoggedIn || !currentUser?.id) {
@@ -572,16 +479,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                     throw new Error(`ID de usuario inválido: ${userId}`);
                 }
                 
-                // Use API
-                // ✅ Log para debug
+                // Usar API
+                //Log para debug
                 console.log('🧹 ClearCart:', { userId });
                 
                 
-                // ✅ SEGUNDO: Sincronizar con API (sin loadCart)
+                //Sincronizar con API (sin loadCart)
                 const response = await carritoService.vaciar(userId);
                 console.log('✅ Respuesta vaciar:', response.data);
                 //await loadCart();
-                // ✅ PRIMERO: Actualizar UI inmediatamente
+                //Actualizar UI inmediatamente
                 setCartItems([]);
                 localStorage.removeItem('carrito'); 
             }

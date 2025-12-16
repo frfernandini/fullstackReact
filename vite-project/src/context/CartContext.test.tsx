@@ -2,7 +2,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { CartProvider, useCart } from './CartContext';
-import type { Producto } from '../components/Producto';
+import type { Producto, Categoria } from '../components/Producto';
 import type { ReactNode } from 'react';
 
 // Mock de localStorage
@@ -27,22 +27,39 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock de datos de productos para usar en los tests
+const mockCategoria1: Categoria = {
+    id: 1,
+    nombre: 'Juegos de mesa',
+    descripcion: 'Juegos de mesa variados',
+    imagen: '/public/img/catan.png',
+    activo: true
+};
+
+const mockCategoria2: Categoria = {
+    id: 2,
+    nombre: 'Accesorios',
+    descripcion: 'Acceosiros Gamer',
+    imagen: '/public/img/mouse.png',
+    activo: true
+};
+
+
 const mockProduct1: Producto = {
-    id: '1',
-    titulo: 'catan',
+    id: 1,
+    nombre: 'catan',
     precio: 10000,
     descripcion: 'catan',
-    categoria: 'teclados',
+    categoria: mockCategoria1,
     imagen: '/public/img/catan.png',
     oferta: false
 };
 
 const mockProduct2: Producto = {
-    id: '2',
-    titulo: 'mouse',
+    id: 2,
+    nombre: 'mouse',
     precio: 8000,
     descripcion: 'mouse ligero',
-    categoria: 'mouses',
+    categoria: mockCategoria2,
     imagen: 'public/img/mouse.png',
     oferta: true,
     descuento: 20

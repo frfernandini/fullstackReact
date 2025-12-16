@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { ProductProvider, useProducts } from './ProductContext';
-import type { Producto } from '../components/Producto';
+import type { Producto, Categoria } from '../components/Producto';
 import type { ReactNode } from 'react';
 
 // Mock de localStorage
@@ -27,22 +27,31 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock de productos de prueba
+
+const mockCategoria: Categoria = {
+    id: 2,
+    nombre: 'Accesorios',
+    descripcion: 'Acceosiros Gamer',
+    imagen: '/public/img/mouse.png',
+    activo: true
+};
+
 const mockProduct1: Producto = {
-    id: '100',
-    titulo: 'catan',
+    id: 100,
+    nombre: 'catan',
     precio: 10000,
     descripcion: 'catan',
-    categoria: 'teclados',
+    categoria: mockCategoria,
     imagen: '/public/img/catan.png',
     oferta: false
 };
 
 const mockProduct2: Producto = {
-    id: '200',
-    titulo: 'mouse',
+    id: 200,
+    nombre: 'mouse',
     precio: 8000,
     descripcion: 'mouse ligero',
-    categoria: 'mouses',
+    categoria: mockCategoria,
     imagen: 'public/img/mouse.png',
     oferta: true,
     descuento: 20
@@ -116,7 +125,7 @@ describe('ProductContext', () => {
         expect(result.current.products['100']).toBeDefined();
 
         act(() => {
-            result.current.removeProduct('100');
+            result.current.removeProduct(100);
         });
 
         expect(result.current.products['100']).toBeUndefined();
@@ -209,7 +218,7 @@ describe('ProductContext', () => {
         const initialProducts = { ...result.current.products };
 
         act(() => {
-            result.current.removeProduct('producto-inexistente');
+            result.current.removeProduct(-1);
         });
 
         // No debería haber cambiado nada
