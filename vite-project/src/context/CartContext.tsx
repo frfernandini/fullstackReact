@@ -14,6 +14,7 @@ interface CartContextType {
     updateQuantity: (productId: number, newQuantity: number) => Promise<void>;
     clearCart: () => Promise<void>;
     loadCart: () => Promise<void>;
+    resetCart: () => void;
     cartCount: number;
     loading: boolean;
     error: string | null;
@@ -43,6 +44,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const { currentUser, isLoggedIn } = useUsers();
+
+    const resetCart = () => {
+        console.log('🧹 [resetCart] Limpiando carrito por logout');
+        setCartItems([]);
+        setError(null);
+        setLoading(false);
+        localStorage.removeItem('carrito');
+    };
+
 
     // Manejar cambios en el estado de autenticación
     useEffect(() => {
@@ -516,6 +526,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             updateQuantity, 
             clearCart,
             loadCart,
+            resetCart,
             cartCount,
             loading,
             error

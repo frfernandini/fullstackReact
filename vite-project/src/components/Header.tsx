@@ -1,11 +1,12 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, } from 'react';
 import { useCart } from '../context/CartContext';
-import { useUsers } from '../context/UserContext';
+import { useUsers, } from '../context/UserContext';
 import '../style/header.css';
 
 const Header = () => {
-  const { cartCount } = useCart();
+  // ORIGINAL: const { cartCount } = useCart();
+  const { cartCount, resetCart } = useCart();
   const { currentUser, isLoggedIn, isAdmin, logout } = useUsers();
   const navigate = useNavigate();
 
@@ -14,9 +15,14 @@ const Header = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleLogout = () => {
-    logout();
+    resetCart();            
+    logout();               
+    setShowDropdown(false); 
+    navigate('/home'); 
+    //ORIGINAL
+    /*logout();
     setShowDropdown(false);//Cerrar dropdown 
-    navigate('/home');
+    navigate('/home');*/
   };
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) => 

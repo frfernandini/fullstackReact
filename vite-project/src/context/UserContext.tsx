@@ -168,6 +168,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     const logout = () => {
         authService.logout();
         setCurrentUser(null);
+        localStorage.removeItem('carrito');
     };
 
     const isLoggedIn = authService.isLogged();
