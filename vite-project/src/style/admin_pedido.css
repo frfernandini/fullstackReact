@@ -165,13 +165,13 @@
 
 /* Select para cambiar estado */
 .admin-pedidos-container .form-select {
-    background-color: #2c3e50;
+    background-color: #018383;
     color: #ffffff;
-    border: 1px solid #3498db;
+    border: 1px solid #036886;
 }
 
 .admin-pedidos-container .form-select:focus {
-    background-color: #2c3e50;
+    background-color: #018383;
     color: #ffffff;
     border-color: #3498db;
     box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
@@ -222,4 +222,60 @@
         width: 100%;
         margin-bottom: 0.5rem;
     }
+}
+
+/*MODAL DE PEDIDOS*/
+/* Limitar altura total del modal */
+.admin-pedidos-container .modal-dialog {
+    max-height: 90vh;
+}
+
+/* Scroll SOLO dentro del cuerpo del modal */
+.admin-pedidos-container .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Header del modal fijo al hacer scroll */
+.admin-pedidos-container .modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #34495e;
+}
+
+/* Encabezado de la tabla fijo dentro del modal */
+.admin-pedidos-container .modal-body .table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: #2c3e50;
+}
+
+/* Mejorar legibilidad de filas */
+.admin-pedidos-container .modal-body .table td {
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Scrollbar personalizado */
+.admin-pedidos-container .modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.admin-pedidos-container .modal-body::-webkit-scrollbar-track {
+    background: #34495e;
+    border-radius: 6px;
+}
+
+.admin-pedidos-container .modal-body::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 6px;
+}
+
+.admin-pedidos-container .modal-body::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
 }

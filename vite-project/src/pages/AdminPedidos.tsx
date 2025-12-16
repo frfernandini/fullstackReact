@@ -176,7 +176,7 @@ const AdminPedidos: React.FC = () => {
                                         
                                         {/* Modal con detalles de productos */}
                                         <div className="modal fade" id={`modal-productos-${pedido.id}`} tabIndex={-1}>
-                                            <div className="modal-dialog modal-lg">
+                                            <div className="modal-dialog modal-lg modal-dialog-scrollable">
                                                 <div className="modal-content">
                                                     <div className="modal-header">
                                                         <h5 className="modal-title">Productos del Pedido #{pedido.id}</h5>
