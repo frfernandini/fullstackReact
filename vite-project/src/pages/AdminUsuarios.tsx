@@ -21,7 +21,6 @@ const AdminUsuarios: React.FC = () => {
                     <Link to="/admin" className="btn btn-outline-secondary me-2">
                         <i className="bi bi-house"></i> Dashboard
                     </Link>
-                    {/* The "Add User" functionality is handled by the public registration page */}
                 </div>
             </div>
             <div className="table-responsive">
@@ -46,7 +45,7 @@ const AdminUsuarios: React.FC = () => {
                                 <tr key={user.email}>
                                     <td>{user.nombre}</td>
                                     <td>{user.email}</td>
-                                    <td>{new Date(user.fechaRegistro).toLocaleDateString()}</td>
+                                    <td>{new Date(user.fechaCreacion).toLocaleDateString()}</td>
                                     <td>
                                         <button className="btn btn-sm btn-danger" onClick={() => handleRemoveUser(user.email)}>
                                             <i className="bi bi-trash"></i> Eliminar

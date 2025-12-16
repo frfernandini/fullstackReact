@@ -7,6 +7,7 @@ import AdminAgregarProducto from './AdminAgregarProducto';
 import AdminUsuarios from './AdminUsuarios';
 import AdminAgregarUsuario from './AdminAgregarUsuario';
 import AdminPedidos from './AdminPedidos';
+import AdminAgregarCategoria from './AdminAgregarCategoria';
 
 
 const AdminLayout: React.FC = () => {
@@ -21,6 +22,7 @@ const AdminLayout: React.FC = () => {
                     <Route path="usuarios" element={<AdminUsuarios />} />
                     <Route path="usuarios/agregar" element={<AdminAgregarUsuario />} />
                     <Route path="pedidos" element={<AdminPedidos/>}/>
+                    <Route path="categorias/agregar" element={<AdminAgregarCategoria />} />
                 </Routes>
             </div>
         </div>

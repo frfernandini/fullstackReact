@@ -8,5 +8,5 @@ export interface User {
     direccion?: string;
     ciudad?: string;
     password?: string; // Añadido campo password
-    fechaRegistro: string;
+    fechaCreacion: string;
 }

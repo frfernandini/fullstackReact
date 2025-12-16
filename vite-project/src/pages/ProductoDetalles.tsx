@@ -129,7 +129,6 @@ const ProductoDetalles: React.FC = () => {
                 </div>
                 <div className="miniaturas-barra">
                     <img className="miniatura" src={producto.imagen} alt="miniatura" onClick={() => setMainImage(producto.imagen)} />
-                    {/* Asumiendo que hay más imágenes en el futuro */}
                 </div>
             </div>
 
