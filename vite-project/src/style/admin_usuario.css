@@ -22,7 +22,7 @@
     background-color: #f8f9fa;
     border-bottom: 2px solid #dee2e6;
     font-weight: 600;
-    color: #495057;
+    color: #ffffff;
 }
 
 .table tbody tr {
@@ -41,6 +41,52 @@ h2 {
 .btn {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
+}
+
+.table-container {
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #3498db;
+    position: relative;
+}
+
+.table-scrollable {
+    max-height: 70vh;     /*CONTROL DEL ALTO */
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+/* Scrollbar */
+.table-scrollable::-webkit-scrollbar {
+    width: 12px;
+}
+
+.table-scrollable::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 6px;
+}
+
+/* Header fijo */
+.table-container .table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #34495e;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Celdas */
+.table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table td:last-child {
+    text-align: center;
 }
 
 /* Responsive */

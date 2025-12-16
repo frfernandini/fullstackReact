@@ -23,43 +23,48 @@ const AdminUsuarios: React.FC = () => {
                     </Link>
                 </div>
             </div>
-            <div className="table-responsive">
-                <table className="table table-striped table-hover" id="tabla-usuarios">
-                    <thead className="table-dark">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Fecha de registro</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.length === 0 ? (
+            <div className="table-container">
+                <div className="table-responsive table-scrollable">
+                    <table className="table table-striped table-hover" id="tabla-usuarios">
+                        <thead className="table-dark">
                             <tr>
-                                <td colSpan={4} className="text-center text-muted">
-                                    No hay usuarios registrados
-                                </td>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Fecha de registro</th>
+                                <th>Acciones</th>
                             </tr>
-                        ) : (
-                            users.map((user) => (
-                                <tr key={user.email}>
-                                    <td>{user.nombre}</td>
-                                    <td>{user.email}</td>
-                                    <td>{new Date(user.fechaCreacion).toLocaleDateString()}</td>
-                                    <td>
-                                        {currentUser?.email === user.email ? (
-                                            <span className="text-muted">No permitido</span>
-                                        ) : (
-                                            <button className="btn btn-sm btn-danger" onClick={() => handleRemoveUser(user.email)}>
-                                                <i className="bi bi-trash"></i> Eliminar
-                                            </button>
-                                        )}
+                        </thead>
+                        <tbody>
+                            {users.length === 0 ? (
+                                <tr>
+                                    <td colSpan={4} className="text-center text-muted">
+                                        No hay usuarios registrados
                                     </td>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
+                            ) : (
+                                users.map((user) => (
+                                    <tr key={user.email}>
+                                        <td>{user.nombre}</td>
+                                        <td title={user.email}>{user.email}</td>
+                                        <td>{new Date(user.fechaCreacion).toLocaleDateString()}</td>
+                                        <td className="text-center">
+                                            {currentUser?.email === user.email ? (
+                                                <span className="text-muted">No permitido</span>
+                                            ) : (
+                                                <button
+                                                    className="btn btn-sm btn-danger"
+                                                    onClick={() => handleRemoveUser(user.email)}
+                                                >
+                                                    Eliminar
+                                                </button>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
